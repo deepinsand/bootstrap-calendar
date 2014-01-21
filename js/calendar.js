@@ -507,12 +507,18 @@ if(!String.prototype.format) {
 		}
 
 		t.data_day = curdate.getFullYear() + '-' + curdate.getMonthFormatted() + '-' + (day < 10 ? '0' + day : day);
-		t.cls = cls;
 		t.day = day;
 
 		t.start = parseInt(curdate.getTime());
 		t.end = parseInt(t.start + 86400000);
 		t.events = this.getEventsBetween(t.start, t.end);
+		
+		if(t.events.length > 0) {
+			cls += ' cal-day-has-event';
+		}
+		
+		t.cls = cls;
+		
 		return this.options.templates['month-day'](t);
 	}
 

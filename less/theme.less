@@ -54,7 +54,6 @@ span[data-cal-date] {
   font-size: 1.2em;
   font-weight: normal;
   opacity: 0.9;
-  cursor: pointer;
   transition: all .3s ease-in-out;
   -webkit-transition: all .1s ease-in-out;
   -moz-transition: all .1s ease-in-out;
@@ -79,6 +78,7 @@ span[data-cal-date]:hover {
 .cal-day-today span[data-cal-date] {
   color: darkgreen;
 }
+
 .cal-day-holiday span[data-cal-date] {
   color: #800080;
 }
@@ -122,6 +122,10 @@ span[data-cal-date]:hover {
   color: #ffffff;
   font-weight: normal;
   line-height: 22px;
+}
+
+.cal-day-has-event {
+  cursor:pointer;
 }
 .events-list {
   max-height: @rowHeightMonth  - 53px;
