@@ -78,8 +78,8 @@ if(!String.prototype.format) {
 		modal_title:        null,
 		views:              {
 			year:  {
-				slide_events: 1,
-				enable:       1
+				slide_events: 0,
+				enable:       0
 			},
 			month: {
 				slide_events: 1,
@@ -89,7 +89,7 @@ if(!String.prototype.format) {
 				enable: 1
 			},
 			day:   {
-				enable: 1
+				enable: 0
 			}
 		},
 		merge_holidays:     false,
@@ -797,14 +797,6 @@ if(!String.prototype.format) {
 				return;
 			}
 			self.options.day = $(this).data('cal-date');
-			self.view(view);
-		});
-		$('.cal-cell').dblclick(function() {
-			var view = $('[data-cal-date]', this).data('cal-view');
-			if(!self.options.views[view].enable) {
-				return;
-			}
-			self.options.day = $('[data-cal-date]', this).data('cal-date');
 			self.view(view);
 		});
 
