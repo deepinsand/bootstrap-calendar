@@ -906,22 +906,11 @@ if(!String.prototype.format) {
 			return;
 		}
 		var self = this;
-		var activecell = 0;
-		var downbox = $(document.createElement('div')).attr('id', 'cal-day-box').html('<i class="icon-chevron-down glyphicon glyphicon-chevron-down"></i>');
-
+		
 		$('.cal-month-day, .cal-year-box .span3')
-			.on('mouseenter', function() {
-				if($('.events-list', this).length == 0) return;
-				if($(this).children('[data-cal-date]').text() == self.activecell) return;
-				downbox.show().appendTo(this);
-			})
-			.on('mouseleave', function() {
-				downbox.hide();
-			})
 			.on('click', function(event) {
-				if($('.events-list', this).length == 0) return;
-				if($(this).children('[data-cal-date]').text() == self.activecell) return;
-				showEventsList(event, downbox, slider, self);
+				if($('.events-list', this).length == 0) return;				
+				showEventsList(event, this, slider, self);
 			})
 		;
 
@@ -931,10 +920,6 @@ if(!String.prototype.format) {
 		});
 
 		this._loadTemplate('events-list');
-
-		downbox.click(function(event) {
-			showEventsList(event, $(this), slider, self);
-		});
 	};
 
 	Calendar.prototype.getEventsBetween = function(start, end) {
@@ -955,8 +940,6 @@ if(!String.prototype.format) {
 		var cell = that.closest('.cal-cell');
 		var row = cell.closest('.cal-before-eventlist');
 		var tick_position = cell.data('cal-row');
-
-		that.fadeOut('fast');
 
 		slider.slideUp('fast', function() {
 			var event_list = $('.events-list', cell);
