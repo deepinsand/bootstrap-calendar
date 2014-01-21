@@ -2,3 +2,10 @@
 node_modules
 components/
 .DS_Store
+.project
+.settings/
+.externalToolBuilders/
+Gruntfile.js
+css/*
+js/calendar.min.js
+package.json
