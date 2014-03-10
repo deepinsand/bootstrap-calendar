@@ -32,12 +32,19 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-					'<%= grunt.template.today("yyyy-mm-dd") %> - ' +
 					'https://github.com/Serhioromano/bootstrap-calendar */\n'
 			},
 			build: {
 				src: 'js/calendar.js',
 				dest: 'js/calendar.min.js'
+			}
+		},
+		copy: {
+			main: {
+				files: [
+					{ src: 'js/calendar.min.js', dest: '/src/balcones/web/js/bootstrap-calendar.min.js'},
+					{ src: 'css/calendar.min.css', dest: '/src/balcones/web/css/bootstrap-calendar.min.css'},
+					]
 			}
 		}
 	});
@@ -45,8 +52,10 @@ module.exports = function(grunt) {
 	// Load the plugin that provides the tasks.
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+
 
 	// Default task(s).
-	grunt.registerTask('default', ['less:css', 'less:css_min', 'uglify']);
+	grunt.registerTask('default', ['less:css', 'less:css_min', 'uglify', 'copy']);
 
 };

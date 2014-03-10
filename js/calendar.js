@@ -957,7 +957,7 @@ if(!String.prototype.format) {
 			self.activecell = $('[data-cal-date]', cell).text();
 			$('#cal-slide-tick').addClass('tick' + tick_position).show();
 			slider.slideDown('fast', function() {
-				$('body').one('click', function() {
+				$('.cal-month-box').one('click', function() {
 					slider.slideUp('fast');
 					self.activecell = 0;
 				});
